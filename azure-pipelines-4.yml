@@ -11,8 +11,7 @@ resources:
 trigger:
 - master
 
-pool:
-  vmImage: ubuntu-latest
+pool: server
 
 steps:
 - script: echo Hello, world!
@@ -23,9 +22,7 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-pool:
-  vmImage: ubuntu-latest
-  
+
 - task: ms-air-aiagility.vss-services-azureml.azureml-restApi-task.MLPublishedPipelineRestAPITask@0
   inputs:
     azureSubscription: '$(WORKSPACE_SVC_CONNECTION)'
