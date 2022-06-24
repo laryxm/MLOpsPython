@@ -3,6 +3,11 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+resources:
+  containers:
+  - container: mlops
+    image: mcr.microsoft.com/mlops/python:latest
+
 trigger:
 - master
 
@@ -20,6 +25,7 @@ steps:
 
 - task: ms-air-aiagility.vss-services-azureml.azureml-restApi-task.MLPublishedPipelineRestAPITask@0
   inputs:
-    azureSubscription: 'aml-workspace-connection'
+    azureSubscription: '$(WORKSPACE_SVC_CONNECTION)'
     PipelineId: '70a7547e-3515-4450-863b-e2b965c0ae59'
     ExperimentName: 'devops-training-pipeline'
+
